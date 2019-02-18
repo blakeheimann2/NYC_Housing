@@ -1,0 +1,56 @@
+Borough,SubBoroNum,SubBoroNam,PUMA5CE,PUMA5ID,PUMA_2010
+Bronx,06,Riverdale / Kingsbridge,03701,3603701,"NYC-Bronx Community District 8--Riverdale, Fieldston & Kingsbridge PUMA"
+Bronx,10,Williamsbridge / Baychester,03702,3603702,"NYC-Bronx Community District 12--Wakefield, Williamsbridge & Woodlawn PUMA"
+Bronx,08,Throgs Neck / Co-op City,03703,3603703,"NYC-Bronx Community District 10--Co-op City, Pelham Bay & Schuylerville PUMA"
+Bronx,09,Pelham Parkway,03704,3603704,"NYC-Bronx Community District 11--Pelham Parkway, Morris Park & Laconia PUMA"
+Bronx,02,Morrisania / East Tremont,03705,3603705,"NYC-Bronx Community District 3 & 6--Belmont, Crotona Park East & East Tremont PUMA"
+Bronx,05,Kingsbridge Heights / Mosholu,03706,3603706,"NYC-Bronx Community District 7--Bedford Park, Fordham North & Norwood PUMA"
+Bronx,04,University Heights / Fordham,03707,3603707,"NYC-Bronx Community District 5--Morris Heights, Fordham South & Mount Hope PUMA"
+Bronx,03,Highbridge / S. Concourse,03708,3603708,"NYC-Bronx Community District 4--Concourse, Highbridge & Mount Eden PUMA"
+Bronx,07,Soundview / Parkchester,03709,3603709,"NYC-Bronx Community District 9--Castle Hill, Clason Point & Parkchester PUMA"
+Bronx,01,Mott Haven / Hunts Point,03710,3603710,"NYC-Bronx Community District 1 & 2--Hunts Point, Longwood & Melrose PUMA"
+Brooklyn,01,Williamsburg / Greenpoint,04001,3604001,NYC-Brooklyn Community District 1--Greenpoint & Williamsburg PUMA
+Brooklyn,04,Bushwick,04002,3604002,NYC-Brooklyn Community District 4--Bushwick PUMA
+Brooklyn,03,Bedford Stuyvesant,04003,3604003,NYC-Brooklyn Community District 3--Bedford-Stuyvesant PUMA
+Brooklyn,02,Brooklyn Heights / Fort Greene,04004,3604004,NYC-Brooklyn Community District 2--Brooklyn Heights & Fort Greene PUMA
+Brooklyn,06,Park Slope / Carroll Gardens,04005,3604005,"NYC-Brooklyn Community District 6--Park Slope, Carroll Gardens & Red Hook PUMA"
+Brooklyn,08,North Crown Heights / Prospect Heights,04006,3604006,NYC-Brooklyn Community District 8--Crown Heights North & Prospect Heights PUMA
+Brooklyn,16,Brownsville / Ocean Hill,04007,3604007,NYC-Brooklyn Community District 16--Brownsville & Ocean Hill PUMA
+Brooklyn,05,East New York / Starrett City,04008,3604008,NYC-Brooklyn Community District 5--East New York & Starrett City PUMA
+Brooklyn,18,Flatlands / Canarsie,04009,3604009,NYC-Brooklyn Community District 18--Canarsie & Flatlands PUMA
+Brooklyn,17,East Flatbush,04010,3604010,"NYC-Brooklyn Community District 17--East Flatbush, Farragut & Rugby PUMA"
+Brooklyn,09,South Crown Heights,04011,3604011,"NYC-Brooklyn Community District 9--Crown Heights South, Prospect Lefferts & Wingate PUMA"
+Brooklyn,07,Sunset Park,04012,3604012,NYC-Brooklyn Community District 7--Sunset Park & Windsor Terrace PUMA
+Brooklyn,10,Bay Ridge,04013,3604013,NYC-Brooklyn Community District 10--Bay Ridge & Dyker Heights PUMA
+Brooklyn,12,Borough Park,04014,3604014,"NYC-Brooklyn Community District 12--Borough Park, Kensington & Ocean Parkway PUMA"
+Brooklyn,14,Flatbush,04015,3604015,NYC-Brooklyn Community District 14--Flatbush & Midwood PUMA
+Brooklyn,15,Sheepshead Bay / Gravesend,04016,3604016,"NYC-Brooklyn Community District 15--Sheepshead Bay, Gerritsen Beach & Homecrest PUMA"
+Brooklyn,11,Bensonhurst,04017,3604017,NYC-Brooklyn Community District 11--Bensonhurst & Bath Beach PUMA
+Brooklyn,13,Coney Island,04018,3604018,NYC-Brooklyn Community District 13--Brighton Beach & Coney Island PUMA
+Manhattan,10,Washington Heights / Inwood,03801,3603801,"NYC-Manhattan Community District 12--Washington Heights, Inwood & Marble Hill PUMA"
+Manhattan,07,Morningside Heights / Hamilton Heights,03802,3603802,"NYC-Manhattan Community District 9--Hamilton Heights, Manhattanville & West Harlem PUMA"
+Manhattan,08,Central Harlem,03803,3603803,NYC-Manhattan Community District 10--Central Harlem PUMA
+Manhattan,09,East Harlem,03804,3603804,NYC-Manhattan Community District 11--East Harlem PUMA
+Manhattan,06,Upper East Side,03805,3603805,NYC-Manhattan Community District 8--Upper East Side PUMA
+Manhattan,05,Upper West Side,03806,3603806,NYC-Manhattan Community District 7--Upper West Side & West Side PUMA
+Manhattan,03,Chelsea / Clinton / Midtown,03807,3603807,"NYC-Manhattan Community District 4 & 5--Chelsea, Clinton & Midtown Business District PUMA"
+Manhattan,04,Stuyvesant Town / Turtle Bay,03808,3603808,"NYC-Manhattan Community District 6--Murray Hill, Gramercy & Stuyvesant Town PUMA"
+Manhattan,02,Lower East Side / Chinatown,03809,3603809,NYC-Manhattan Community District 3--Chinatown & Lower East Side PUMA
+Manhattan,01,Greenwich Village / Financial District,03810,3603810,"NYC-Manhattan Community District 1 & 2--Battery Park City, Greenwich Village & Soho PUMA"
+Queens,01,Astoria,04101,3604101,NYC-Queens Community District 1--Astoria & Long Island City PUMA
+Queens,03,Jackson Heights,04102,3604102,NYC-Queens Community District 3--Jackson Heights & North Corona PUMA
+Queens,07,Flushing / Whitestone,04103,3604103,"NYC-Queens Community District 7--Flushing, Murray Hill & Whitestone PUMA"
+Queens,11,Bayside / Little Neck,04104,3604104,"NYC-Queens Community District 11--Bayside, Douglaston & Little Neck PUMA"
+Queens,13,Bellerose / Rosedale,04105,3604105,"NYC-Queens Community District 13--Queens Village, Cambria Heights & Rosedale PUMA"
+Queens,08,Hillcrest / Fresh Meadows,04106,3604106,"NYC-Queens Community District 8--Briarwood, Fresh Meadows & Hillcrest PUMA"
+Queens,04,Elmhurst / Corona,04107,3604107,NYC-Queens Community District 4--Elmhurst & South Corona PUMA
+Queens,06,Forest Hills / Rego Park,04108,3604108,NYC-Queens Community District 6--Forest Hills & Rego Park PUMA
+Queens,02,Sunnyside / Woodside,04109,3604109,NYC-Queens Community District 2--Sunnyside & Woodside PUMA
+Queens,05,Middle Village / Ridgewood,04110,3604110,"NYC-Queens Community District 5--Ridgewood, Glendale & Middle Village PUMA"
+Queens,09,Kew Gardens / Woodhaven,04111,3604111,NYC-Queens Community District 9--Richmond Hill & Woodhaven PUMA
+Queens,12,Jamaica,04112,3604112,"NYC-Queens Community District 12--Jamaica, Hollis & St. Albans PUMA"
+Queens,10,Howard Beach / S. Ozone Park,04113,3604113,NYC-Queens Community District 10--Howard Beach & Ozone Park PUMA
+Queens,14,Rockaways,04114,3604114,"NYC-Queens Community District 14--Far Rockaway, Breezy Point & Broad Channel PUMA"
+Staten Island,03,South Shore,03901,3603901,"NYC-Staten Island Community District 3--Tottenville, Great Kills & Annadale PUMA"
+Staten Island,02,Mid-Island,03902,3603902,NYC-Staten Island Community District 2--New Springville & South Beach PUMA
+Staten Island,01,North Shore,03903,3603903,"NYC-Staten Island Community District 1--Port Richmond, Stapleton & Mariner's Harbor PUMA"
