@@ -7,4 +7,3 @@ I start by marrying neighborhood and demographic data to property sales data. Fr
 Once the data is prepped, cleaned, and summarized in visualizations, I begin modelling using SciKit Learn. Python files are included in the Repo and some of the Tableau Visualizations are/will be shown here. 
 
 
-![logo](C:\Users\Blake\Pictures\rubics.jpg)
