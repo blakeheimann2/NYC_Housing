@@ -22,15 +22,16 @@ From here, I can start modelling, but I see that the data isnt near normal with 
 
 ### Modelling (Incomplete)
 
-I start by throwing a few models such as random forrest, gradient boosting, K-nearest neighbors, as well as a ridge regression and multilayer perceptron without any specified hyperparameters just to see performance metrics on R^2, MSE, and MAE. The random forrest model seems promising with an R^2 of approx. .77, while the others have weak explanatory power at or below an R^2 of .30. 
+I start by throwing a few models such as random forrest, gradient boosting, K-nearest neighbors, as well as a ridge regression and multilayer perceptron without any specified hyperparameters just to see performance metrics on R^2, MSE, and MAE. The random forrest model seems promising with an R^2 of approx. .77, while the others have weak explanatory power at or below an R^2 of .30. These results are moderately less when we apply 10-fold cross validation, advocating for further exploration. 
 
 **Next Steps:**
-Currently, I have code that iterates through various models to test them (that takes way too long to run), as well as code to blend multiple models together in an attempt to yield better model performance. My plan is to explore blending these models, as well as use the GridSearchCV function from Sci-Kit Learn to find optimal hyperparameters (though this is computationally expensive).
+Currently, I have code that iterates through various models to test them (that takes way too long to run), as well as code to blend multiple models together in an attempt to yield better model performance. My plan is to explore blending these models, as well as use the GridSearchCV function from Sci-Kit Learn to find optimal hyperparameters (though this is computationally expensive). Another option would be to try running a neural network in Tensorflow (no code included currently).
 
 *Due to my poor documentation with exploring log transformations for standardization I may also run that again*
 
 
+### Conclusion
 
-
+More to come!
 
 
