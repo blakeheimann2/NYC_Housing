@@ -159,6 +159,10 @@ print(mean_absolute_error(y_test, y_pred))
 print("R^2")
 print(r2_score(y_test, y_pred))
 
+feature_importances = pd.DataFrame(model.feature_importances_,index = X.columns,
+columns=['importance']).sort_values('importance',ascending=False)
+
+
 from sklearn.neural_network import MLPRegressor
 print("NNET:")
 model = MLPRegressor(alpha=.00001,max_iter=5000) #57; cv .01
@@ -229,6 +233,16 @@ print("MAE")
 print(mean_absolute_error(y_test, y_pred))
 print("R^2")
 print(r2_score(y_test, y_pred))
+
+#Run this after any model to Cross Val
+
+from sklearn.model_selection import KFold
+
+kfold = model_selection.KFold(n_splits=10, random_state=0)
+cv_results01 = model_selection.cross_val_score(model, df_test,y_test, cv=kfold, scoring='r2')
+cv_results02 = model_selection.cross_val_score(model, df_test,y_test, cv=kfold, scoring='neg_mean_squared_error')
+cv_results03 = model_selection.cross_val_score(model, df_test,y_test, cv=kfold, scoring='neg_mean_absolute_error')
+
 
 ##NOT FINALIZED BELOW
 '''
