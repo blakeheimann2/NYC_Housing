@@ -1,0 +1,169 @@
+import tensorflow as tf
+import numpy as np
+import pandas as pd
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.wrappers.scikit_learn import KerasRegressor
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import KFold
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from keras.utils import plot_model
+import keras as ks
+
+seed = 7
+np.random.seed(seed)
+
+#pull in and prep data
+NYC = pd.DataFrame(pd.read_csv('NYC_final_data_abridged_.csv'))
+NYC.columns = NYC.columns.str.strip().str.lower().str.replace(' ', '_')
+
+del NYC['apartment_number']
+del NYC['address']
+del NYC['ease-ment']
+del NYC['unnamed:_0']
+del NYC['cartodb_id']
+del NYC['borocd']
+del NYC['cd_full_title']
+del NYC['lot']
+del NYC['zip_code']
+del NYC['shared_puma']
+
+NYC = NYC.drop(columns=['acs_tooltip','cb_email','cb_website', 'cd_son_fy2018', 'moe_bach_deg',	'moe_bach_deg_boro',	'moe_bach_deg_nyc',	'moe_foreign_born',	'moe_hh_rent_burd',	'moe_hh_rent_burd_boro',	'moe_hh_rent_burd_nyc',	'moe_lep_rate',	'moe_lep_rate_boro',	'moe_lep_rate_nyc',	'moe_mean_commute',	'moe_mean_commute_boro',	'moe_mean_commute_nyc',	'moe_over65_rate', 'moe_over65_rate_boro',	'moe_over65_rate_nyc',	'moe_poverty_rate',	'moe_under18_rate',	'moe_unemnployment',	'moe_unemployment_boro',	'moe_unemployment_cd', 'moe_under18_rate_boro', 'moe_under18_rate_nyc',	'neighborhood',	'neighborhoods'], axis = 1)
+NYC = NYC.drop(columns=['shared_puma_cd', 'son_issue_1', 'son_issue_2', 'son_issue_3', 'the_geom', 'the_geom_webmercator', 'puma10', 'pop_acs'])
+NYC1 = pd.get_dummies(NYC, columns=['cd_short_title', 'borough','building_class_at_present', 'building_class_at_time_of_sale', 'building_class_category',  'tax_class_at_time_of_sale', 'tax_class_at_present'])
+NYC1 = NYC1.drop(columns = ['sale_date'], axis =1)
+NYC1 = NYC1.drop(index = 56791) #issue data point
+
+nullcols = NYC1.columns[NYC1.isnull().any()]
+NYC1 = NYC1.drop(columns = nullcols)
+
+
+NYC1 = NYC1[NYC1['land_square_feet'] != 0]
+NYC1 = NYC1[NYC1['gross_square_feet'] != 0]
+NYC1 = NYC1[NYC1['total_units'] != 0]
+
+final_data= NYC1.to_csv('final_cleaned_NYC_df.csv')
+
+
+'''
+#NORMAL TESTING
+from sklearn.preprocessing import StandardScaler
+X, y = NYC1.iloc[:, 1:], NYC1.sale_price
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+scaler = StandardScaler().fit(X_train)
+X_train = scaler.transform(X_train)
+X_test = scaler.transform(X_test)
+
+#y_test = np.log(y_test) gives shitty results
+#y_train = np.log(y_train)
+scalery =  StandardScaler().fit(np.array(y_train).reshape(-1, 1))
+y_test = scalery.transform(np.array(y_test).reshape(-1, 1))
+y_train = scalery.transform(np.array(y_train).reshape(-1, 1))
+
+
+
+###############
+model = Sequential()
+model.add(Dense(128, input_dim=X_test.shape[1] ,init='uniform'))
+model.add(Dense(64, init='uniform',activation='relu'))
+model.add(Dense(8, init='uniform',activation='relu'))
+model.add(Dense(1, init='uniform',activation='linear'))
+print(model.summary())
+
+model.compile(loss='mean_squared_error',optimizer='adam',metrics=['mae','mse','mape'])
+nnet = model.fit(X_train,y_train, epochs = 10, batch_size=10)
+scores = model.evaluate(X_test, y_test)
+print("\n%s: %.2f" % (model.metrics_names[1],scores[1]))
+print("\n%s: %.2f" % (model.metrics_names[2],scores[2]))
+print("\n%s: %.2f%%" % (model.metrics_names[3],scores[3]*100))
+'''
+
+
+###MANUAL CV
+from sklearn.model_selection import KFold
+from sklearn.preprocessing import StandardScaler
+X, y = np.array(NYC1.iloc[:, 1:]), np.array(NYC1.sale_price)
+kf = KFold(n_splits=10, shuffle=True, random_state=7)
+kf.get_n_splits(X)
+print(kf)
+cv_mae = []
+cv_mse = []
+cv_mape = []
+for train_index, test_index in kf.split(X):
+   print("TRAIN:", train_index, "TEST:", test_index)
+   X_train, X_test = X[train_index], X[test_index]
+   y_train, y_test = y[train_index], y[test_index]
+   scalerx = StandardScaler().fit(X_train)
+   X_test = scalerx.transform(X_test)
+   X_train = scalerx.transform(X_train)
+   scalery = StandardScaler().fit(np.array(y_train).reshape(-1, 1))
+   y_test = scalery.transform(np.array(y_test).reshape(-1, 1))
+   y_train = scalery.transform(np.array(y_train).reshape(-1, 1))
+   model = Sequential()
+   model.add(Dense(128, input_dim=X_test.shape[1], init='uniform'))
+   model.add(Dense(64, init='uniform', activation='relu'))
+   model.add(Dense(8, init='uniform', activation='relu'))
+   model.add(Dense(1, init='uniform', activation='linear'))
+   model.compile(loss='mean_squared_error', optimizer='adam', metrics=['mae', 'mse', 'mape'])
+   model.fit(X_train,y_train, nb_epoch=10,batch_size=10,verbose=0)
+   scores = model.evaluate(X_test,y_test, verbose=0)
+   print("\n%s: %.2f" % (model.metrics_names[1], scores[1]))
+   print("\n%s: %.2f" % (model.metrics_names[2], scores[2]))
+   print("\n%s: %.2f%%" % (model.metrics_names[3], scores[3] * 100))
+   cv_mae.append(scores[1])
+   cv_mse.append(scores[2])
+   cv_mape.append(scores[3])
+
+
+'''
+y_pred = model.predict(X_test)
+
+print('MSE')
+print(mean_squared_error(y_test, y_pred))
+print("MAE")
+print(mean_squared_error(y_test, y_pred))
+print("R^2")
+print(r2_score(y_test, y_pred))
+print("explained Var")
+print(explained_variance_score(y_test, y_pred))
+print("median absolute error")
+print(median_absolute_error(y_test, y_pred))
+
+from keras import backend as K
+
+SSE =  np.sum((y_test - y_pred)**2)
+SST = np.sum((y_test - np.mean(y_test))**2)
+R2 = 1 - (SSE/SST)
+from keras.layers import Activation, Dense, Dropout
+from keras.wrappers.scikit_learn import KerasRegressor
+
+
+##########################
+
+X, y = NYC1.iloc[:, 1:], NYC1.sale_price
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+# define base model
+def baseline_model():
+	# create model
+	model = Sequential()
+	model.add(Dense(13, input_dim=X_train.shape[1], kernel_initializer='normal', activation='relu'))
+	model.add(Dense(1,input_dim=X_train.shape[1], kernel_initializer='normal'))
+	# Compile model
+	model.compile(loss='mean_squared_error', optimizer='adam')
+	return model
+
+# fix random seed for reproducibility
+seed = 7
+np.random.seed(seed)
+# evaluate model with standardized dataset
+estimator = KerasRegressor(build_fn=baseline_model, epochs=100, batch_size=5, verbose=0)
+
+kfold = KFold(n_splits=10, random_state=seed)
+results = cross_val_score(estimator, X_train, y_train, cv=kfold)
+print("Results: %.2f (%.2f) MSE" % (results.mean(), results.std()))
+
+'''
